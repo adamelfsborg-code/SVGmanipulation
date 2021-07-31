@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="btn-group">
+          <button onclick="checkFilledBodyParts()">Check</button>
+          <button onclick="clearFilledBodyParts()">Clear</button>
+          <button onclick="fillAllBodyParts()">Fill</button>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 80 80">
+          <circle
+            r="39"
+            fill="#000"
+            id="background"
+            onclick="fillBodyPart('background')"
+          />
+          <path
+            id="left-side"
+            d="M0,38a38,38 0 0 1 0,-76a19,19 0 0 1 0,38a19,19 0 0 0 0,38"
+            onclick="fillBodyPart('left-side')"
+          />
+          <circle
+            r="5"
+            cy="19"
+            fill="#fff"
+            id="lower-cirlce"
+            onclick="fillBodyPart('lower-cirlce')"
+          />
+          <circle
+            r="5"
+            cy="-19"
+            id="upper-cirlce"
+            onclick="fillBodyPart('upper-cirlce')"
+          />
+        </svg>
+      </div>
+      <div class="filled-body-parts">
+        <ul></ul>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
