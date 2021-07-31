@@ -1,40 +1,37 @@
-$(document).on("ready", function () {});
+const express = require("express");
+const pool = require("./db");
+const cors = require("cors");
+const path = require("path");
+const app = express();
 
-function fillBodyPart(bodyPart) {
-  if ($(`#${bodyPart}`).hasClass("filled")) {
-    $(`#${bodyPart}`).removeClass("filled");
-    return 0;
-  }
-  $(`#${bodyPart}`).addClass("filled");
-}
+app.use(express.static(path.join(__dirname, "static")));
+app.use(express.json());
 
-function checkFilledBodyParts() {
-  $(".filled-body-parts ul").empty();
-  const bodyParts = [];
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    method: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
-  $("svg")
-    .children()
-    .each(function (index) {
-      if (!$(this).hasClass("filled")) return 0;
-      bodyParts.push(`<li id=${index} >${$(this).attr("id")}</li>`);
-    });
-  $(".filled-body-parts ul").append(bodyParts.join(""));
-}
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/index.html"));
+});
 
-function clearFilledBodyParts() {
-  $("svg")
-    .children()
-    .each(function () {
-      if (!$(this).hasClass("filled")) return 0;
-      $(this).removeClass("filled");
-    });
-}
+app.post("/post-body", async (req, res) => {
+  const { background, leftSide, lowerCircle, upperCircle } = req.body;
 
-function fillAllBodyParts() {
-  $("svg")
-    .children()
-    .each(function (index) {
-      if ($(this).hasClass("filled")) return 0;
-      $(this).addClass("filled");
-    });
-}
+  await pool.query(
+    "INSERT INTO bodyparts (background,left_side,lower_circle,upper_circle) VALUES ($1, $2, $3, $4)",
+    [background, leftSide, lowerCircle, upperCircle],
+    (err, result) => {
+      if (!result) return err;
+    }
+  );
+  await pool.end();
+});
+
+app.listen(3001, () => {
+  console.log("Server is running");
+});

@@ -1,0 +1,27 @@
+{
+  "name": "svgmanipulation",
+  "version": "1.0.0",
+  "description": "\"# SVGmanipulation\"",
+  "main": "script.js",
+  "scripts": {
+    "start": "nodemon script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamelfsborg-code/SVGmanipulation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamelfsborg-code/SVGmanipulation/issues"
+  },
+  "homepage": "https://github.com/adamelfsborg-code/SVGmanipulation#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12",
+    "path": "^0.12.7",
+    "pg": "^8.7.1"
+  }
+}
