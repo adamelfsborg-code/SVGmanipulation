@@ -101,3 +101,18 @@ li:hover {
   background-color: #3bb6d5;
   color: #fff;
 }
+
+.body-groups {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #3bb6d5;
+  padding: 1.2rem;
+}
+
+.body_item {
+  margin: 0.5rem;
+  width: 100px;
+  height: 100px;
+}
